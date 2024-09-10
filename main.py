@@ -1,4 +1,4 @@
-print("Hello")
+#Merge Sorted Array
 class Solution(object):
     def merge(self, nums1, m, nums2, n):
        
@@ -21,3 +21,13 @@ class Solution(object):
         
         for x in range(m+n):
             nums1[x] = nums3[x]
+#Remove Element
+class Solution(object):
+    def removeElement(self, nums, val):
+        k = 0
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[k]=nums[i]
+                k+=1
+        return k
+        
