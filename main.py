@@ -31,3 +31,12 @@ class Solution(object):
                 k+=1
         return k
         
+#Remove Duplicates from Sorted Array
+class Solution(object):
+    def removeDuplicates(self, nums):
+        k = 0
+        for i in range(len(nums)-1):
+            if(nums[i] != nums[i+1]):
+                nums[k+1] = nums[i+1]
+                k += 1
+        return k+1
