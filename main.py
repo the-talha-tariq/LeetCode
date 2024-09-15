@@ -55,3 +55,24 @@ class Solution(object):
                 k += 1
 
         return k
+    
+#Rolling Dice
+import random
+noOfDice = int(input("Number of Dice you want to roll?"))
+
+while True:
+    choice = input("Roll the dice? (y/n): ").lower()
+
+    if choice == 'y':
+        print("(",end='', flush=True)
+        for i in range(0,noOfDice):
+            
+            a = random.randint(1, 6)
+            print(f"{a},",end='', flush=True)
+        print(")")
+    elif choice == 'n':
+        print("Thanks for playing!")
+        break
+        
+    else:
+        print("Invalid Choice!")
