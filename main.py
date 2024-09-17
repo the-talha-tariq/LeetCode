@@ -89,3 +89,18 @@ class Solution(object):
         
         for i in range(n):
             nums[i] = rotated[i]
+
+
+#Best Time to Buy and Sell Stock
+class Solution(object):
+    def maxProfit(self, prices):
+        
+        buy = prices[0]
+        profit = 0
+        for i in range(1,len(prices)):
+            if(prices[i] > buy):
+                profit = max(profit,(prices[i] - buy))
+            else:
+                buy = prices[i]
+        
+        return profit
