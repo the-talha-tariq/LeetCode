@@ -129,5 +129,26 @@ class Solution(object):
             farthest_reachable = max(farthest_reachable, i + nums[i])
             if farthest_reachable >= len(nums)-1:
                 return True
+
+#Jump Game 2
+class Solution(object):
+    def jump(self, nums):
+        far_most = 0
+        jump = 0
+        current_reachable = 0
+        if len(nums) == 1:
+            return 0
+        for i in range(len(nums)):
+            far_most = max(far_most,nums[i] + 1)
+
+            if i == current_reachable:
+                jump +=1
+                current_reachable = far_most
+
+                if current_reachable >= len(nums)-1:
+                    break
+        return jump
+            
+        
                 
         
