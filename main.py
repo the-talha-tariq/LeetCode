@@ -186,3 +186,25 @@ class RandomizedSet(object):
 # param_1 = obj.insert(val)
 # param_2 = obj.remove(val)
 # param_3 = obj.getRandom()
+
+
+#Product of Array Except Self
+class Solution(object):
+    def productExceptSelf(self, nums):
+        n = len(nums)
+        prefix = [0] * n
+        postfix = [0] * n
+
+        prefix[0] = 1
+        postfix[n-1] = 1
+        for i in range(1, n):
+            prefix[i] = prefix[i - 1] * nums[i - 1]
+        
+        for i in range(n-2, -1,-1):
+           postfix[i] = postfix[i + 1] * nums[i + 1]
+        
+        result = [0] * n
+        for i in range(n):
+            result[i] = prefix[i] * postfix[i]
+        
+        return result
