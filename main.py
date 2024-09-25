@@ -208,3 +208,25 @@ class Solution(object):
             result[i] = prefix[i] * postfix[i]
         
         return result
+
+#134. Gas Station
+class Solution(object):
+    def canCompleteCircuit(self, gas, cost):
+        
+        start_index = 0
+        tank = 0
+        total_gas = 0
+        total_cost = 0
+
+        for i in range(len(gas)):
+            total_gas = total_gas + gas[i]
+            total_cost = total_cost + cost[i]
+
+            tank = tank - cost[i] + gas [i]
+
+            if tank < 0:
+                start_index = i+1
+                tank = 0
+        if total_gas < total_cost:
+            return -1
+        return start_index
