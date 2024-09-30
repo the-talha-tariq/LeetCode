@@ -279,3 +279,21 @@ class Solution(object):
 
         
         return water
+    
+
+#58. Length of Last Word
+class Solution(object):
+    def lengthOfLastWord(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        length = 0
+        last_word_length = length
+        for i in range(len(s)):
+            if s[i] == ' ':
+                length = 0
+            else:
+                length +=1
+                last_word_length = length
+        return last_word_length
