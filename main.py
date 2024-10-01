@@ -294,6 +294,6 @@ class Solution(object):
             if s[i] == ' ':
                 length = 0
             else:
-                length +=1
+                length += 1
                 last_word_length = length
         return last_word_length
