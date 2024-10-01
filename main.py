@@ -297,3 +297,25 @@ class Solution(object):
                 length += 1
                 last_word_length = length
         return last_word_length
+
+#14. Longest Common Prefix
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        strs.sort()
+        first_word = strs[0]
+        last_word = strs[len(strs)-1]
+        word = ""
+        for i in range(len(first_word)):
+            if i < len(last_word) and first_word[i] == last_word[i]:
+                word += first_word[i]
+            else:   
+                break
+        return word
+                
+
+        
