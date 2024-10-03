@@ -345,6 +345,35 @@ class Solution(object):
                 total += roman_map[s[i]]
         
         return total
-                
+
+#28. Find the Index of the First Occurrence in a String
+class Solution(object):
+    def strStr(self, haystack, needle):
+        """
+        :type haystack: str
+        :type needle: str
+        :rtype: int
+        """
+        i = 0
+        j = 0
+        while True:
+            if haystack[i] == needle[j]:
+                i += 1
+                j += 1
+            else:
+                if j > 0:
+                    i = i - j + 1
+                    j = 0
+                else:
+                    i += 1
+            if j == len(needle):
+                return i-j
+            if i == len(haystack):
+                return -1
+        return -1
+
+
+
+        
 
         
