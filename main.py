@@ -415,3 +415,24 @@ class Solution(object):
                 unmatched_close -= 1  
             max_unmatched_close = max(max_unmatched_close, unmatched_close)
         return (max_unmatched_close + 1) // 2
+
+#392. Is Subsequence
+class Solution(object):
+    def isSubsequence(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        if len(s) == 0:
+            return True
+        s_iterate = 0
+        for i in range(len(t)):
+            if s[s_iterate] == t[i]:
+                s_iterate += 1
+
+                if s_iterate == len(s):
+                    return True
+        
+        return False
+            
