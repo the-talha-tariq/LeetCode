@@ -398,5 +398,20 @@ class Solution(object):
         
 
         
+#1963. Minimum Number of Swaps to Make the String Balanced
+class Solution(object):
+    def minSwaps(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        unmatched_close = 0
+        max_unmatched_close = 0
 
-    
+        for i in range(len(s)):
+            if s[i] == "]":
+                unmatched_close += 1  
+            else:
+                unmatched_close -= 1  
+            max_unmatched_close = max(max_unmatched_close, unmatched_close)
+        return (max_unmatched_close + 1) // 2
