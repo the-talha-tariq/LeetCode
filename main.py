@@ -475,3 +475,21 @@ class Solution(object):
 
         return False 
         
+#242. Valid Anagram
+
+class Solution(object):
+    def isAnagram(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        sort1 = ''.join(sorted(s))
+        sort2 = ''.join(sorted(t))
+        print(sort1)
+        print(sort2)
+
+        if sort1==sort2:
+            return True
+        else:
+            return False
