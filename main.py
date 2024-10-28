@@ -509,3 +509,20 @@ class Solution(object):
             if complement in hashmap:
                 return [hashmap[complement], i]
             hashmap[num] = i
+
+#49. Group Anagrams
+class Solution(object):
+    def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        anagram_map = {}
+
+        for word in strs:
+            sorted_key = ''.join(sorted(word))
+            if sorted_key in anagram_map:
+                anagram_map[sorted_key].append(word) 
+            else:
+                anagram_map[sorted_key] = [word]
+        return list(anagram_map.values()) 
