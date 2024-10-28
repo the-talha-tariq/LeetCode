@@ -526,3 +526,24 @@ class Solution(object):
             else:
                 anagram_map[sorted_key] = [word]
         return list(anagram_map.values()) 
+
+#347. Top K Frequent Elements
+class Solution(object):
+    def topKFrequent(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        number_of_occurence = {}
+
+        for num in nums:
+            if num in number_of_occurence:
+                number_of_occurence[num] += 1
+            else:
+                number_of_occurence[num] = 1
+
+        most_frequent = heapq.nlargest(k, number_of_occurence.keys(),key=number_of_occurence.get)
+
+        return most_frequent
+                
