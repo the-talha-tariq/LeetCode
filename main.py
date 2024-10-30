@@ -572,3 +572,41 @@ class Solution(object):
                 current_streak = 1  
 
         return max(longest, current_streak)
+
+
+#36. Valid Sudoku
+class Solution(object):
+    def isValidSudoku(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: bool
+        """
+        for row in board:
+            seen = set()  
+            for value in row:
+                if value != ".":  
+                    if value in seen:  
+                        return False
+                    seen.add(value)
+
+            seen.clear()
+        for col in range(9):
+            seen = set()  
+            for row in range(9):
+                value = board[row][col]
+                if value != ".":  
+                    if value in seen:  
+                        return False
+                    seen.add(value) 
+            seen.clear()
+        for box_row in range(0, 9, 3):
+            for box_col in range(0, 9, 3):
+                seen = set() 
+                for i in range(3):
+                    for j in range(3):
+                        value = board[box_row + i][box_col + j]
+                        if value != ".":
+                            if value in seen:  
+                                return False
+                            seen.add(value)  
+        return True
