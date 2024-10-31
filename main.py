@@ -610,3 +610,23 @@ class Solution(object):
                                 return False
                             seen.add(value)  
         return True
+
+
+#125. Valid Palindrome
+class Solution(object):
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        clean_text = (''.join(char for char in s if char.isalnum())).lower()
+        start = 0
+        end = len(clean_text)-1
+
+        while start < end:
+            if clean_text[start] == clean_text[end]:
+                start += 1
+                end -= 1
+            else:
+                return False
+        return True
