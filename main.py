@@ -791,3 +791,36 @@ class MinStack(object):
 # obj.pop()
 # param_3 = obj.top()
 # param_4 = obj.getMin()
+
+
+#150. Evaluate Reverse Polish Notation
+
+
+class Solution(object):
+    def evalRPN(self, tokens):
+        """
+        :type tokens: List[str]
+        :rtype: int
+        """
+        stack = []
+        for token in tokens:
+            if token in {"+", "-", "*", "/"}:
+                b = stack.pop()
+                a = stack.pop()
+                
+                if token == "+":
+                    c = a + b
+                elif token == "-":
+                    c = a - b
+                elif token == "*":
+                    c = a * b
+                elif token == "/":
+                    # Perform integer division that truncates towards zero
+                    c = int(a / b) if a * b >= 0 else -(abs(a) // abs(b))
+                    
+                stack.append(c)
+            else:
+                # Convert the token to an integer before appending
+                stack.append(int(token))
+                
+        return stack[0]
