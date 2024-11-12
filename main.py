@@ -824,3 +824,32 @@ class Solution(object):
                 stack.append(int(token))
                 
         return stack[0]
+
+
+#22. Generate Parentheses
+
+class Solution(object):
+    def generateParenthesis(self, n):
+        """
+        :type n: int
+        :rtype: List[str]
+        """
+        stack = []
+        result = []
+
+        def backtract(openN, closeN):
+            
+            if openN == closeN == n:
+                result.append("".join(stack));
+                return
+            if openN < n:
+                stack.append("(")
+                backtract(openN+1,closeN)
+                stack.pop()
+            if closeN < openN:
+                stack.append(")")
+                backtract(openN,closeN+1)
+                stack.pop()
+    
+        backtract(0, 0)
+        return result
