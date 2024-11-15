@@ -873,3 +873,27 @@ class Solution(object):
             stack.append(i)
         
         return answer
+
+
+
+
+
+#853. Car Fleet
+class Solution(object):
+    def carFleet(self, target, position, speed):
+        """
+        :type target: int
+        :type position: List[int]
+        :type speed: List[int]
+        :rtype: int
+        """
+        sorted_cars = sorted(zip(position, speed), key=lambda x: x[0],reverse=True)
+        stack = []
+
+        for pos, spd in sorted_cars:
+            time_to_reach = (target - pos) / float(spd)
+            
+            if not stack or time_to_reach > stack[-1]:
+                stack.append(time_to_reach)
+
+        return len(stack)
