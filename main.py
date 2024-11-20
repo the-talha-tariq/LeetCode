@@ -919,4 +919,32 @@ class Solution(object):
             else:
                 start = middle + 1
         return -1
+
+
+#74. Search a 2D Matrix
+class Solution(object):
+    def searchMatrix(self, matrix, target):
+        """
+        :type matrix: List[List[int]]
+        :type target: int
+        :rtype: bool
+        """
+        rows = len(matrix)          
+        cols = len(matrix[0])
+        start = 0
+        end = rows*cols
+        print(end)
+        for i in range(rows*cols):
+            mid = (end + start)/2
+            row = mid // cols
+            col = mid % cols
+            
+            if matrix[row][col] == target:
+                return True
+            elif target > matrix[row][col]:
+                start = mid
+            else:
+                end = mid
+        return False
+
                 
