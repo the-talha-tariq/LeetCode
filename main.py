@@ -947,4 +947,32 @@ class Solution(object):
                 end = mid
         return False
 
+
+#875. Koko Eating Bananas
+
+class Solution(object):
+    def minEatingSpeed(self, piles, h):
+        """
+        :type piles: List[int]
+        :type h: int
+        :rtype: int
+        """
+        end = max(piles)
+        start = 1
+        result = end
+        while start <= end:
+            mid = (start + end) // 2
+            print(mid)
+            total_hour = 0
+
+            for pile in piles:
+
+                total_hour += math.ceil(float(pile)/mid)
                 
+            if total_hour <= h:
+                result = min(result,mid)  # Update the result
+                end = mid - 1  # Check for smaller k
+            else:
+                start = mid + 1
+
+        return result
