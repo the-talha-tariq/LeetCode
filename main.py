@@ -1036,3 +1036,26 @@ class Solution(object):
                 else:
                     end = mid - 1
         return -1
+
+
+#3. Longest Substring Without Repeating Characters
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        k = 0 
+        l = 0 
+        char_index = {}  
+        max_length = 0  
+
+        while l < len(s):
+            if s[l] not in char_index or char_index[s[l]] < k:
+                max_length = max(max_length, l - k + 1)
+            else:
+                k = char_index[s[l]] + 1 
+            char_index[s[l]] = l
+            l += 1  
+
+        return max_length
