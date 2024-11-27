@@ -1059,3 +1059,31 @@ class Solution(object):
             l += 1  
 
         return max_length
+
+#424. Longest Repeating Character Replacement
+
+class Solution:
+    def characterReplacement(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: int
+        """
+        char_count = {}  # Dictionary to store character counts in the current window
+        start = 0  # Left pointer of the window
+        max_freq = 0  # Maximum frequency of any character in the window
+        max_length = 0  # Length of the longest valid substring
+
+        for end in range(len(s)):
+            char_count[s[end]] = char_count.get(s[end], 0) + 1
+            max_freq = max(max_freq, char_count[s[end]])
+
+            # If the number of characters to replace exceeds k, shrink the window
+            while (end - start + 1) - max_freq > k:
+                char_count[s[start]] -= 1
+                start += 1
+
+            # Update the maximum length of the window
+            max_length = max(max_length, end - start + 1)
+
+        return max_length
