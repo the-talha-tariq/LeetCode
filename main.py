@@ -1087,3 +1087,31 @@ class Solution:
             max_length = max(max_length, end - start + 1)
 
         return max_length
+
+
+#567. Permutation in String
+class Solution(object):
+    def checkInclusion(self, s1, s2):
+        """
+        :type s1: str
+        :type s2: str
+        :rtype: bool
+        """
+        s1_count = {}
+        for char in s1:
+            s1_count[char] = s1_count.get(char, 0) + 1
+
+        s2_count = {}
+        k = 0
+        for l in range(len(s2)):
+            s2_count[s2[l]] = s2_count.get(s2[l], 0) + 1
+        
+            if l-k+1 > len(s1):
+                if s2_count[s2[k]] == 1:
+                    del s2_count[s2[k]]
+                else:
+                    s2_count[s2[k]] -= 1
+                k += 1
+            if s1_count == s2_count:
+                return True
+        return False
