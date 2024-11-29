@@ -1115,3 +1115,41 @@ class Solution(object):
             if s1_count == s2_count:
                 return True
         return False
+
+#76. Minimum Window Substring
+class Solution(object):
+    def minWindow(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: str
+        """
+        if t == "":
+            return ""
+        t_count={}
+        window={}
+        for char in t:
+            t_count[char] = t_count.get(char, 0) + 1
+        
+        have = 0
+        need = len(t_count)
+        res = [-1,-1]
+        res_len = float("infinity")
+        l = 0
+        for r in range(len(s)):
+            current = s[r]
+            window[current] = window.get(current, 0) + 1
+
+            if current in t_count and window[current] == t_count[current]:
+                have +=1
+            
+            while have == need:
+                if (r - l + 1) < res_len:
+                    res = [l,r]
+                    res_len =   (r - l + 1)
+                window[s[l]] -= 1
+                if s[l] in t_count and window[s[l]] < t_count[s[l]]:
+                    have -=1
+                l += 1
+        l, r = res
+        return s[l : r+1] if res_len != float("infinity") else ""
