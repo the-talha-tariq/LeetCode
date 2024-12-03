@@ -1153,3 +1153,37 @@ class Solution(object):
                 l += 1
         l, r = res
         return s[l : r+1] if res_len != float("infinity") else ""
+
+
+
+#2109. Adding Spaces to a String
+class Solution(object):
+    def addSpaces(self, s, spaces):
+        """
+        :type s: str
+        :type spaces: List[int]
+        :rtype: str
+        """
+        result = []
+        space_index = 0
+        for i in range(len(s)):
+            if space_index < len(spaces) and i == spaces[space_index]:
+                result.append(" ")
+                space_index += 1  
+            result.append(s[i])
+
+        return "".join(result)
+
+
+        # updated_string=""
+        # i = 0
+        # for j in range(len(s)):
+        #     if j == spaces[i]:
+        #         updated_string += " " + s[j]
+        #         if len(spaces) > i+1:
+        #             i += 1
+        #             print(i)
+        #     else:
+        #         updated_string += s[j]
+        # return updated_string
+            
