@@ -1190,7 +1190,6 @@ class Solution(object):
 
 
 #4. Median of Two Sorted Arrays
-
 class Solution:
     def findMedianSortedArrays(self, nums1, nums2):
         if len(nums1) > len(nums2):
