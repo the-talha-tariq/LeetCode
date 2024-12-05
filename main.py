@@ -1219,3 +1219,42 @@ class Solution:
                 start = partitionX + 1
         
         raise ValueError("Input arrays are not sorted!")
+
+
+
+
+#2337. Move Pieces to Obtain a String
+class Solution(object):
+    def canChange(self, start, target):
+        """
+        :type start: str
+        :type target: str
+        :rtype: bool
+        """
+
+        
+        first = 0
+        second = 0
+        n = len(start)
+        while first < n or second < n:
+            while first < n and start[first] == '_':
+                first += 1
+            while second < n and target[second] == '_' :
+                second += 1  
+
+            if (first < n) != (second < n):
+                return False
+            
+            if first < n and second < n:
+                if start[first] != target[second]:
+                    return False
+                if start[first] == 'L' and first < second:
+                    return False
+                if start[first] == 'R' and first > second:
+                    return False
+            
+            first += 1
+            second += 1
+
+        return True
+            
