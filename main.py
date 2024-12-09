@@ -1258,3 +1258,37 @@ class Solution(object):
 
         return True
             
+
+
+#50. Pow(x, n)
+class Solution(object):
+    def myPow(self, x, n):
+        """
+        :type x: float
+        :type n: int
+        :rtype: float
+        """
+        if n == 0:
+            return 1
+        positive_n = abs(n)
+        result = 1.0
+        while positive_n > 0:
+            if positive_n % 2 == 1:
+                result = result*x
+            x = x*x
+            positive_n = positive_n // 2
+
+        if n < 0:
+            return 1 / result
+        return result
+        # positive_of_n = abs(n)
+        # result = 1
+        # for i in range(positive_of_n):
+
+        #     result =result*x
+            
+        #     print("Result:",result)
+        #     print(i)
+        # if n<0:
+        #     return 1/result
+        # return result
