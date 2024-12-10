@@ -1281,14 +1281,3 @@ class Solution(object):
         if n < 0:
             return 1 / result
         return result
-        # positive_of_n = abs(n)
-        # result = 1
-        # for i in range(positive_of_n):
-
-        #     result =result*x
-            
-        #     print("Result:",result)
-        #     print(i)
-        # if n<0:
-        #     return 1/result
-        # return result
