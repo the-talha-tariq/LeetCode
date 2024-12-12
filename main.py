@@ -1345,3 +1345,40 @@ class Solution(object):
             prev = current
             current = temp
         return prev
+
+#143. Reorder List
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def reorderList(self, head):
+        """
+        :type head: Optional[ListNode]
+        :rtype: None Do not return anything, modify head in-place instead.
+        """
+        half = head
+        end = head.next
+        while end and end.next:
+            half = half.next
+            end = end.next.next
+
+        current = half.next
+        prev = None  
+        half.next = None
+        while current:
+            temp = current.next
+            current.next = prev
+            prev = current
+            current = temp
+
+        mid = prev
+        start = head
+        while mid:
+            midTemp = mid.next
+            startTemp = start.next
+            start.next = mid
+            mid.next = startTemp
+            start = startTemp
+            mid = midTemp
