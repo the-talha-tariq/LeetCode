@@ -1500,3 +1500,41 @@ class Solution(object):
 
         return slow
            
+
+
+#234. Palindrome Linked Lists
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def isPalindrome(self, head):
+        """
+        :type head: Optional[ListNode]
+        :rtype: bool
+        """
+        slow = head
+        fast = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        
+        current = slow
+        prev = None
+        while current:
+            temp = current.next
+            current.next = prev
+            prev = current
+            current = temp
+        
+        start = head
+        while prev:
+            if start.val != prev.val:
+                return False
+            
+            start = start.next
+            prev = prev.next
+
+        return True
