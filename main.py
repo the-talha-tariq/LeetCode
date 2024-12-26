@@ -1538,3 +1538,48 @@ class Solution(object):
             prev = prev.next
 
         return True
+
+#226. Invert Binary Tree
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def invertTree(self, root):
+        """
+        :type root: Optional[TreeNode]
+        :rtype: Optional[TreeNode]
+        """
+        if not root:
+            return None
+
+        root.left, root.right = root.right, root.left
+
+        self.invertTree(root.left)
+        self.invertTree(root.right)
+
+        return root
+
+
+#104. Maximum Depth of Binary Tree
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def maxDepth(self, root):
+        """
+        :type root: Optional[TreeNode]
+        :rtype: int
+        """
+        if root is None:
+            return 0
+
+        lHeight = self.maxDepth(root.left)
+        rHeight = self.maxDepth(root.right)
+        return max(lHeight, rHeight) + 1
