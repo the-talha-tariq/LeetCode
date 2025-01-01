@@ -1615,3 +1615,33 @@ class Solution(object):
         height(root)  
         return self.diameter
         
+
+
+#110. Balanced Binary Tree
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def isBalanced(self, root):
+        """
+        :type root: Optional[TreeNode]
+        :rtype: bool
+        """
+        def height(root):
+            if not root:
+                return 0
+            left_subtree = height(root.left)
+            right_subtree = height(root.right)
+
+            if left_subtree == -1 or right_subtree == -1:
+                return -1
+            elif abs(right_subtree - left_subtree) > 1:
+                return -1
+            else:
+                return max(right_subtree,left_subtree) + 1
+
+        return height(root) != -1
