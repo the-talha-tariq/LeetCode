@@ -1732,3 +1732,29 @@ class Solution(object):
         
         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
         
+
+#916. Word Subsets
+
+class Solution(object):
+    def wordSubsets(self, words1, words2):
+        """
+        :type words1: List[str]
+        :type words2: List[str]
+        :rtype: List[str]
+        """
+        def mergeFrequency(words):
+            merged = Counter()
+            for word in words:
+                freq = Counter(word)
+                for char in freq:
+                    merged[char] = max(merged[char], freq[char])
+            return merged
+
+        words2_freq = mergeFrequency(words2)
+        result = []
+        for word in words1:
+            word_freq = mergeFrequency(word)
+            if all(word_freq[char] >= words2_freq[char] for char in words2_freq):
+                result.append(word)
+                
+        return result
