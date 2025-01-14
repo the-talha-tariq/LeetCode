@@ -1758,3 +1758,28 @@ class Solution(object):
                 result.append(word)
                 
         return result
+
+
+
+#2657. Find the Prefix Common Array of Two Arrays
+
+class Solution(object):
+    def findThePrefixCommonArray(self, A, B):
+        """
+        :type A: List[int]
+        :type B: List[int]
+        :rtype: List[int]
+        """
+        n = len(A)
+        freq = {}
+        C = []
+        for i in range(n):
+
+            freq[A[i]] = freq.get(A[i], 0) + 1
+            freq[B[i]] = freq.get(B[i], 0) + 1
+                
+            common_count = sum(1 for value in freq.values() if value > 1)
+
+            C.append(common_count)
+
+        return C
