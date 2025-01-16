@@ -1807,3 +1807,21 @@ class Solution(object):
                 return i+1
             
         return len(nums)
+
+#66. Plus One
+class Solution(object):
+    def plusOne(self, digits):
+        n = len(digits)
+        digits[n-1] += 1
+        for i in range(n-1, -1, -1):
+            if digits[i] == 10:
+                digits[i] = 0
+                if i-1 >= 0:
+                    digits[i-1] += 1
+                else:
+                    digits.append(0)
+                    digits[i] += 1
+        return digits
+
+        
+        
