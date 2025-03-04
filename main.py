@@ -1824,4 +1824,17 @@ class Solution(object):
         return digits
 
         
-        
+
+#1780. Check if Number is a Sum of Powers of Three
+
+class Solution(object):
+    def checkPowersOfThree(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        while n > 0:
+            if n % 3 > 1:  
+                return False
+            n //= 3  
+        return True
