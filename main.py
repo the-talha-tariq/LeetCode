@@ -1911,3 +1911,18 @@ class Solution(object):
                 dp[i] = dp[i] or dp[i - num]
 
         return dp[target]
+
+
+#3375. Minimum Operations to Make Array Values Equal to K
+class Solution(object):
+    def minOperations(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        if any(num < k for num in nums):
+            return -1
+
+        greater_than_k = set(num for num in nums if num > k)
+        return len(greater_than_k)
